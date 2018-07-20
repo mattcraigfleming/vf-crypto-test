@@ -7,7 +7,7 @@ export default () => (
     <Router>
         <React.Fragment>
             <Route path="/" component={Home} exact/>
-            <Route path="/currencies/:id" component={Coin} />
+            <Route path="/:id" component={Coin} />
         </React.Fragment>
     </Router>
 )

@@ -5,15 +5,15 @@ import ListItem from 'components/AppList/ListItem'
 const reducer = (item, currentValue) => item && item[currentValue];
 const post = (o, path, defaultVal) => path.reduce(reducer, o) || defaultVal;
 
-const AppList = ({ columns, data, className }) => (
+const AppList = ({ columns, data, className, onRowClick }) => (
     <table className={className}>
         <ListNav columns={columns}/>
                 <tbody>
         			{data.map(row => (
-        				<tr>
+        				<tr onClick={() => onRowClick(row)}>
         					{
         						columns.map(column => (
-        							<ListItem component={column.component} align={column.align} value={post(row, column.path)} />
+        							<ListItem component={column.component} align={column.align} value={post(row, column.path)} data={row}/>
         						))
         					}
         				</tr>

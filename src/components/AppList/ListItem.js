@@ -6,10 +6,11 @@ const TableData = styled.td`
     text-align: ${props => props.align};
 `
 
-const ListItem = ({ component, value, align }) => {
+const ListItem = ({ component, value, align, data }) => {
+    if (component === undefined) return <TableData />
     return(
-        <TableData>
-            {React.createElement(component, { value })}
+        <TableData align={align}>
+            {React.createElement(component, { value, data })}
         </TableData>
     )
 }

@@ -1,10 +1,20 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom';
 import AppList from 'components/AppList'
 import { CoinCell, PriceCell, MarketCapCell, PercentCell} from 'routes/home/partial/tableCells'
 import styled from 'styled-components'
 
 const tableCols = [
-    {
+		{
+			path: [],
+		},
+		{
+			path: [],
+		},
+		{
+			path: [],
+		},
+    	{
     		title: 'cryptocurrency',
     		component: CoinCell,
     		path: ['name'],
@@ -23,7 +33,17 @@ const tableCols = [
     		title: '24h change',
     		component: PercentCell,
     		path: ['percent_change_24h'],
-    	},];
+		},
+		{
+			path: [],
+		},
+		{
+			path: [],
+		},
+		{
+			path: [],
+		},
+];
 
 
 
@@ -44,16 +64,22 @@ class Home extends React.Component {
 			coins,
 			isLoading: false
         })) 
-    }
+	}
+	
+	handleRowClick = (row) => {
+		console.log(row);
+		const {history} = this.props;
+		history.push(`/${row.name}`)
+	}
 
     render() {
 		return (
 			<div>
-			{ 
+			{ 	/* Swap for spinner component */
 				this.state.isLoading ? 
 					<div>Loading....</div>
 					:
-				<WrapperTable columns={tableCols} data={this.state.coins} />
+				<WrapperTable columns={tableCols} data={this.state.coins} onRowClick={this.handleRowClick}/>
 			}
 			</div>
 		)
@@ -61,4 +87,4 @@ class Home extends React.Component {
 }
 
 
-export default Home;
+export default withRouter(Home);
