@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 const DEFAULT_STATE = {
     coins: [],
-    isLoading: false
+    isLoading: false,
 };  
 
 export const CContext = React.createContext(DEFAULT_STATE);
@@ -18,13 +18,15 @@ class Provider extends Component {
         
         const response = await fetch(`https://api.coinmarketcap.com/v2/ticker/?convert=EUR&limit=10&structure=array`);
         const coins = await response.json();
+        const error = coins.metadata;
         this.setState({
             coins: coins.data,
             lastUpdated: Date(),
-            isLoading: false
+            isLoading: false,
+            error: error,
         })
         console.log(this.state.lastUpdate)
-        console.log(this.state.coins)
+        console.log(this.state.error)
     }
     
     updateCoin = async (id) => {
@@ -36,22 +38,21 @@ class Provider extends Component {
             [coin.id]: coin,
         }
         this.setState((prevState) => ({
-            coins: nextCoin
+            coins: nextCoin,
+            isLoading: false
         }));
     }
 
     render() { 
-        console.log(this.getCoins);
+        console.log(this.updateCoins);
         return ( 
-            <CContext.Provider value={{ ...this.state, updateCoins: this.updateCoins, updateCoin: this.updateCoin, }}>
-                           { 	/* Swap for spinner component */
-                            this.state.isLoading ? 
-                            <div>Loading .....</div> :
+            <CContext.Provider value={{ ...this.state, updateCoins: this.updateCoins, updateCoin: this.updateCoin, }} >
+                     
             
                         
-                            this.props.children
+                            {this.props.children}
                         
-                       }
+                       
                        </CContext.Provider>
 
          );

@@ -48,28 +48,24 @@ const WrapperTable = styled(AppList)`
 `
 
 class Home extends React.Component {
+
 	
     componentDidMount() {
-		this.props.updateCoins();
+		const {updateCoins} = this.props;
+		updateCoins();
+		this.interval = window.setInterval(updateCoins, 60000)
 	}
 
 	handleRowClick = (row) => {
 		console.log(row);
-		const {history} = this.props;
-		history.push(`/${row.id}/${row.name}`)
+		const { history } = this.props;
+		history.push(`/coin/${row.id}`)
 	}
 
 
     render() {
-		return (
-			<div>
-
-				<WrapperTable columns={tableCols} data={Object.values(this.props.coins)} onRowClick={this.handleRowClick} />
+		return  <WrapperTable columns={tableCols} data={Object.values(this.props.coins).sort((a, b) => a.rank < b.rank ? -1 : 1)} onRowClick={this.handleRowClick} />
 		
-
-
-			</div>
-		)
     }
 }
 

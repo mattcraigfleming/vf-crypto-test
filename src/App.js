@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Routes from 'routes';
-import styled from 'styled-components';
-import AppHeader from 'components/AppHeader';
+import { BrowserRouter as Router } from 'react-router-dom'
+import styled, { injectGlobal } from 'styled-components';
+import reset from 'styled-reset'
+import Header from 'components/Header';
 import Provider from 'store/Provider';
 
 const Wrapper = styled.div`
@@ -13,14 +15,26 @@ const Wrapper = styled.div`
 
 `
 
+const baseStyles = () => injectGlobal`
+    ${reset}  
+    html, body, #root {
+      height: 100%;
+    }
+
+`
+
+
 class App extends Component {
   render() {
+    baseStyles()
     return (
       <Provider>
-        <Wrapper>
-          <AppHeader />
-          <Routes />
-        </Wrapper>
+        <Router>
+          <Wrapper>
+            <Header />
+            <Routes />
+          </Wrapper>
+        </Router>
       </Provider>
     );
   }

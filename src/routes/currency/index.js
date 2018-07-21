@@ -1,12 +1,11 @@
 import React from 'react'
 import { plusCoins } from 'store/Consumer'
 import styled from 'styled-components'
+import Label from 'routes/currency/partial/Label'
+import SummaryCell from 'routes/currency/partial/SummaryCell'
 
 const CurrencySymbol = styled.span`
     margin-right: 5px;
-`
-const CurSymbol = styled.span`
-    margin-left: 5px;
 `
 const CurSummary = styled.span`
     flex: 1;
@@ -29,16 +28,12 @@ const CurLabel = styled.div`
 `
 const Row = styled.div`
     display: flex;
-        ${CurLabel} {
+        ${Label} {
         		margin-bottom: 15px;
         	}
 `
-const Cell = styled.div`
-    flex: 1
-    {CurLabel} {
-        margin-bottom: 15px;
-    }
-`
+
+
 const LeftCol = styled.div`
     flex-grow: 1;
 	display: flex;
@@ -46,7 +41,7 @@ const LeftCol = styled.div`
 	justify-content: center;
 	height: 100%;
 
-	${CurLabel} {
+	${Label} {
 		margin-right: 10px;
 	}
 `
@@ -84,6 +79,7 @@ class Currency extends React.Component {
             updateCoin(match.params.id)
 
         }
+        
 
     }
 
@@ -103,24 +99,21 @@ class Currency extends React.Component {
                     </LeftCol>
                     <RightCol>
                         <Row>
-                            <Cell>
-                                <CurLabel>market cap</CurLabel>
+                            <SummaryCell label="market cap">
                                 <CurSummaryItem><CurrencySymbol>$</CurrencySymbol>{coin.quotes.USD.market_cap}</CurSummaryItem>
-                            </Cell>
-                            <Cell>
-                                <CurLabel>market cap</CurLabel>
-                                <CurSummaryItem><CurrencySymbol>$</CurrencySymbol>{coin.quotes.USD.market_cap}</CurSummaryItem>
-                            </Cell>
+                            </SummaryCell>
+                            <SummaryCell label="24h volume">
+                                
+                                <CurSummaryItem><CurrencySymbol>$</CurrencySymbol>{coin.quotes.USD.volume_24h}</CurSummaryItem>
+                            </SummaryCell>
                         </Row>
                         <Row>
-                            <Cell>
-                                <CurLabel>market cap</CurLabel>
-                                <CurSummaryItem><CurrencySymbol>$</CurrencySymbol>{coin.quotes.USD.market_cap}</CurSummaryItem>
-                            </Cell>
-                             <Cell>
-                                <CurLabel>market cap</CurLabel><CurSymbol></CurSymbol>
-                                <CurSummaryItem><CurrencySymbol>$</CurrencySymbol>{coin.quotes.USD.market_cap}</CurSummaryItem>
-                            </Cell>
+                            <SummaryCell label="circulating supply">
+                                <CurSummaryItem><CurrencySymbol>$</CurrencySymbol>{coin.circulating_supply}</CurSummaryItem>
+                            </SummaryCell>
+                             <SummaryCell label="total supply">
+                                <CurSummaryItem><CurrencySymbol>$</CurrencySymbol>{coin.total_supply}</CurSummaryItem>
+                            </SummaryCell>
                         </Row>
                     </RightCol>
                 </Wrapper>

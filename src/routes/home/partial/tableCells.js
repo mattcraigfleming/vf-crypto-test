@@ -41,7 +41,7 @@ const PercentCellInner = styled.div`
 	color: rgb(96,108,131); 
 	font-size: 12px;
 	font-weight: bold;
-	color: ${props => parseInt(props.value, 10) > 0 ? 'rgb(42,192,124)' : 'red'}
+	color: ${props => parseInt(props.value, 10) > 0 ? '#2ac07c' : '#a94442'}
 `
 
 const CurrencySymbol = styled.span`
@@ -66,17 +66,17 @@ export const CoinCell = ({ value, data }) => (
 	</CoinCellChild>
 )
 
-
+/* replace number formatting */
 
 export const PriceCell = ({ data }) => (
 	<PriceCellChild>
-		<CurrencySymbol>£</CurrencySymbol> {data.quotes['USD'].price}
+		<CurrencySymbol>£</CurrencySymbol> {data.quotes['USD'].price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
 	</PriceCellChild>
 );
 
 export const MarketCapCell = ({ data }) => (
 	<MarketCapCellChild>
-		<CurrencySymbol>£</CurrencySymbol> {data.quotes['USD'].market_cap}
+		<CurrencySymbol>£</CurrencySymbol> {data.quotes['USD'].market_cap.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
 	</MarketCapCellChild>
 );
 
