@@ -1,13 +1,13 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from 'routes/home'
-import Coin from 'routes/currencies'
+import Currency from 'routes/currency'
 
 export default () => (
     <Router>
         <React.Fragment>
             <Route path="/" component={Home} exact/>
-            <Route path="/:id" component={Coin} />
+            <Route path="/:id" component={Currency} />
         </React.Fragment>
     </Router>
 )

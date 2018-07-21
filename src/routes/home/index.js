@@ -48,30 +48,25 @@ const WrapperTable = styled(AppList)`
 `
 
 class Home extends React.Component {
-    state = {
-		isLoading: false,
-	}
 	
     componentDidMount() {
-		this.props.getCoins();
+		this.props.updateCoins();
 	}
 
 	handleRowClick = (row) => {
 		console.log(row);
 		const {history} = this.props;
-		history.push(`/${row.name}`)
+		history.push(`/${row.id}/${row.name}`)
 	}
 
 
     render() {
 		return (
 			<div>
-			{ 	/* Swap for spinner component */
-				this.state.isLoading ? 
-					<div>Loading....</div>
-					:
-				<WrapperTable columns={tableCols} data={this.props.coins} onRowClick={this.handleRowClick}/>
-			}
+
+				<WrapperTable columns={tableCols} data={Object.values(this.props.coins)} onRowClick={this.handleRowClick} />
+		
+
 
 			</div>
 		)

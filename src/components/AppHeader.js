@@ -19,6 +19,6 @@ const Logo = styled.span`
 export default () => (
     <Header>
         <Logo>VFCrypto</Logo>
-
+        
     </Header>
 )

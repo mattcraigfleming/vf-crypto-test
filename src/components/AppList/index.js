@@ -7,7 +7,7 @@ const post = (o, path, defaultVal) => path.reduce(reducer, o) || defaultVal;
 
 const AppList = ({ columns, data, className, onRowClick }) => (
     <table className={className}>
-        <ListNav columns={columns}/>
+        <ListNav columns={columns} />
                 <tbody>
         			{data.map(row => (
         				<tr onClick={() => onRowClick(row)}>

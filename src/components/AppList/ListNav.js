@@ -18,7 +18,7 @@ const Th = styled.th`
 const ListNav = ({ columns = [] }) => (
     <ListHeader>
         <tr>
-        {columns.map(column => <Th key={column.id} align={column.align} >{column.title}</Th>)}
+        {columns.map(column => <Th align={column.align} >{column.title}</Th>)}
         </tr>
     </ListHeader>
 )

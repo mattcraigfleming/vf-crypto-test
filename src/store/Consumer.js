@@ -3,6 +3,6 @@ import { CContext } from './Provider';
 
 export const plusCoins = (WrappedComponent) => (props) => (
     <CContext.Consumer>
-        {state => <WrappedComponent blah={state} {...state} {...props} />}
+        {state => <WrappedComponent {...state} {...props} />}
     </CContext.Consumer>
 )
