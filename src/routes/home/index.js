@@ -1,13 +1,12 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
 import AppList from 'components/AppList'
 import { CoinCell, PriceCell, MarketCapCell, PercentCell} from 'routes/home/partial/tableCells'
 import styled from 'styled-components'
+import { plusCoins } from 'store/Consumer'
+
 
 const tableCols = [
-		{
-			path: [],
-		},
 		{
 			path: [],
 		},
@@ -22,7 +21,7 @@ const tableCols = [
     	{
     		title: 'price',
 		    component: PriceCell,
-    		path: ['price_usd'],
+    		path: ['price'],
     	},
     	{
     		title: 'market cap',
@@ -39,10 +38,7 @@ const tableCols = [
 		},
 		{
 			path: [],
-		},
-		{
-			path: [],
-		},
+		}
 ];
 
 
@@ -53,24 +49,19 @@ const WrapperTable = styled(AppList)`
 
 class Home extends React.Component {
     state = {
-		coins: [],
-		isLoading: false
-    }
-    async componentDidMount() {
-		this.setState({ isLoading: true });
-        const response = await fetch('https://api.coinmarketcap.com/v1/ticker/?limit=10');
-        const coins = await response.json();
-        this.setState(() => ({
-			coins,
-			isLoading: false
-        })) 
+		isLoading: false,
 	}
 	
+    componentDidMount() {
+		this.props.getCoins();
+	}
+
 	handleRowClick = (row) => {
 		console.log(row);
 		const {history} = this.props;
 		history.push(`/${row.name}`)
 	}
+
 
     render() {
 		return (
@@ -79,12 +70,15 @@ class Home extends React.Component {
 				this.state.isLoading ? 
 					<div>Loading....</div>
 					:
-				<WrapperTable columns={tableCols} data={this.state.coins} onRowClick={this.handleRowClick}/>
+				<WrapperTable columns={tableCols} data={this.props.coins} onRowClick={this.handleRowClick}/>
 			}
+
 			</div>
 		)
     }
 }
 
 
-export default withRouter(Home);
+export default withRouter(
+	plusCoins(Home)
+);

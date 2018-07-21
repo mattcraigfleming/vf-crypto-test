@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Routes from 'routes';
 import styled from 'styled-components';
 import AppHeader from 'components/AppHeader';
+import Provider from 'store/Provider';
 
 const Wrapper = styled.div`
   font-family: 'Raleway', sans-serif;
@@ -15,10 +16,12 @@ const Wrapper = styled.div`
 class App extends Component {
   render() {
     return (
-      <Wrapper>
-        <AppHeader />
-        <Routes />
-      </Wrapper>
+      <Provider>
+        <Wrapper>
+          <AppHeader />
+          <Routes />
+        </Wrapper>
+      </Provider>
     );
   }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import ListNav from 'components/AppList/ListNav'
 import ListItem from 'components/AppList/ListItem'
 
-const reducer = (item, currentValue) => item && item[currentValue];
+const reducer = (acc, currentValue) => acc && acc[currentValue];
 const post = (o, path, defaultVal) => path.reduce(reducer, o) || defaultVal;
 
 const AppList = ({ columns, data, className, onRowClick }) => (
@@ -13,7 +13,7 @@ const AppList = ({ columns, data, className, onRowClick }) => (
         				<tr onClick={() => onRowClick(row)}>
         					{
         						columns.map(column => (
-        							<ListItem component={column.component} align={column.align} value={post(row, column.path)} data={row}/>
+        							<ListItem key={data.id} component={column.component} align={column.align} value={post(row, column.path)} data={row}/>
         						))
         					}
         				</tr>

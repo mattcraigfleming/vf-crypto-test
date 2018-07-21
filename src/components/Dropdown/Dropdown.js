@@ -7,7 +7,7 @@ import DropdownMenu from 'components/Dropdown/DropdownMenu'
       
       this.state = {
         toggled: false,
-        selected: "ß"
+        selected: "USD"
       };
     }
     
@@ -28,19 +28,20 @@ import DropdownMenu from 'components/Dropdown/DropdownMenu'
       }
   
       var dropdown = React.Children.map(
+
         this.props.children, (child, i) => {
-        
         var clonedProps = {};
         clonedProps.click = this.handleClick.bind(this, i);
   
         return React.cloneElement(child, clonedProps);
+        
       });
-  
+      
       return (
         <div className={className} 
           onClick={this.toggleDropdown.bind(this)}>
           <div className="dropdown-active">
-            {this.props.children[this.state.selected]}
+            {!this.props.children[this.state.selected] ? 'USD' : this.props.children[this.state.selected]}
           </div>
           <DropdownMenu toggled={this.state.toggled} >
             {dropdown}

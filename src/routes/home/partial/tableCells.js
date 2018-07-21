@@ -49,32 +49,39 @@ const CurrencySymbol = styled.span`
 	margin-right: 5px;
 `
 
+
+
 export const CoinCell = ({ value, data }) => (
 	<CoinCellChild>
+
 		<Rank>
 			{data.rank}
 		</Rank>
-		<Icon src={`https://rawgit.com/atomiclabs/cryptocurrency-icons/master/svg/icon/${data.symbol.toLowerCase()}.svg`} alt="Bitcoin" />
+		 <Icon src={`https://rawgit.com/atomiclabs/cryptocurrency-icons/master/svg/icon/${data.symbol.toLowerCase()}.svg`} alt={data.symbol.toLowerCase()} />
 		<Title>
 			{value}
 		</Title>
+		
+
 	</CoinCellChild>
 )
 
-export const PriceCell = ({ value }) => (
+
+
+export const PriceCell = ({ data }) => (
 	<PriceCellChild>
-		<CurrencySymbol>£</CurrencySymbol>{value} 
+		<CurrencySymbol>£</CurrencySymbol> {data.quotes['USD'].price}
 	</PriceCellChild>
 );
 
-export const MarketCapCell = ({ value }) => (
+export const MarketCapCell = ({ data }) => (
 	<MarketCapCellChild>
-		<CurrencySymbol>£</CurrencySymbol> {value}
+		<CurrencySymbol>£</CurrencySymbol> {data.quotes['USD'].market_cap}
 	</MarketCapCellChild>
 );
 
-export const PercentCell = ({ value }) => (
+export const PercentCell = ({ data }) => (
 	<PercentCellInner>
-		{Math.abs(value)} % { parseInt(value, 10) > 0 ? '↑' : '↓'}
+		{Math.abs(data.quotes['USD'].percent_change_24h)} % { parseInt(data.quotes['USD'].percent_change_24h, 10) > 0 ? '↑' : '↓'}
 	</PercentCellInner>
 );

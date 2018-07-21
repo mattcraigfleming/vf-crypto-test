@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const TableData = styled.td`
     padding: 24px;
     text-align: ${props => props.align};
+    cursor: pointer;
 `
 
 const ListItem = ({ component, value, align, data }) => {
