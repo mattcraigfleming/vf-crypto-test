@@ -9,7 +9,7 @@ const CurrencySymbol = styled.span`
 `
 const CurSummary = styled.span`
     flex: 1;
-    background: linear-gradient(to right, rgb(18,36,60), rgb(28,50,80))
+    background: linear-gradient(to right, rgb(18,36,60), rgb(28,50,80));
 `
 const CurRank = styled.div`
     border-radius: 50%;
@@ -19,7 +19,8 @@ const CurRank = styled.div`
 	width: 50px;
 	display: inline-flex;
 	align-items: center;
-	justify-content: center;
+    justify-content: center;
+    margin-left: 10px;
 `
 const CurLabel = styled.div`
     color: rgb(95,114,140);
@@ -28,8 +29,10 @@ const CurLabel = styled.div`
 `
 const Row = styled.div`
     display: flex;
+    margin-bottom: 20px;
         ${Label} {
-        		margin-bottom: 15px;
+                margin-bottom: 5px;
+                
         	}
 `
 
@@ -71,19 +74,19 @@ const CurSummaryItem = styled.div`
 
 class Currency extends React.Component {
 
+
+
     componentWillMount(){
 
-        const { coins, updateCoin, match } = this.props;
+        const { coins, updateCoin, match } = this.props
 
         if (!coins[match.params.id]) {
             updateCoin(match.params.id)
-
+            }
         }
-        
-
-    }
 
     render() {
+
         const { coins, match } = this.props;
  
         const coin = coins[match.params.id];
@@ -103,10 +106,10 @@ class Currency extends React.Component {
                                 <CurSummaryItem><CurrencySymbol>$</CurrencySymbol>{coin.quotes.USD.market_cap}</CurSummaryItem>
                             </SummaryCell>
                             <SummaryCell label="24h volume">
-                                
                                 <CurSummaryItem><CurrencySymbol>$</CurrencySymbol>{coin.quotes.USD.volume_24h}</CurSummaryItem>
                             </SummaryCell>
                         </Row>
+                        <br />
                         <Row>
                             <SummaryCell label="circulating supply">
                                 <CurSummaryItem><CurrencySymbol>$</CurrencySymbol>{coin.circulating_supply}</CurSummaryItem>
@@ -122,4 +125,4 @@ class Currency extends React.Component {
     }
 }
 
-export default plusCoins(Currency);
+export default plusCoins(Currency)

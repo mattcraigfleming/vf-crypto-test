@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export default styled.div`
-    color: rgb(95,114,140);
+    color: #5f728c;
 	font-size: 12px;
     text-transform: uppercase;
 `

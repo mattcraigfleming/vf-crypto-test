@@ -51,10 +51,13 @@ class Home extends React.Component {
 
 	
     componentDidMount() {
-		const {updateCoins} = this.props;
-		updateCoins();
-		this.interval = window.setInterval(updateCoins, 60000)
+		this.props.updateCoins();
+		this.interval = window.setInterval(this.props.updateCoins(), 60000)
 	}
+
+	componentWillUnmount() {
+				window.clearInterval(this.interval)
+			 }
 
 	handleRowClick = (row) => {
 		console.log(row);

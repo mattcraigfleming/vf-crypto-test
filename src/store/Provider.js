@@ -15,7 +15,6 @@ class Provider extends Component {
     }
 
     updateCoins = async () => {
-        
         const response = await fetch(`https://api.coinmarketcap.com/v2/ticker/?convert=EUR&limit=10&structure=array`);
         const coins = await response.json();
         const error = coins.metadata;
@@ -44,16 +43,13 @@ class Provider extends Component {
     }
 
     render() { 
-        console.log(this.updateCoins);
         return ( 
-            <CContext.Provider value={{ ...this.state, updateCoins: this.updateCoins, updateCoin: this.updateCoin, }} >
-                     
-            
-                        
-                            {this.props.children}
-                        
-                       
-                       </CContext.Provider>
+            <CContext.Provider value={{ ...this.state, updateCoins: this.updateCoins, updateCoin: this.updateCoin, }} > 
+              {    /* Swap for spinner component */
+                this.state.isLoading ? 
+                <img style={{width: 120, height: 100, display: 'flex'}} alt="Loading..." src={ require('../images/loading.gif') } /> : this.props.children
+              }
+            </CContext.Provider>
 
          );
     }

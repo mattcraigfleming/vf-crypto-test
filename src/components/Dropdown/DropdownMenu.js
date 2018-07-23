@@ -6,16 +6,22 @@ class DropdownMenu extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: ""
+      value: "",
+      open: "hidden",
     }
     this.handleMenuClick = this.handleMenuClick.bind(this)
   }
 
   handleMenuClick(e) {
-    console.log(e.target.value)
+    this.setState({
+      value: e.currentTarget.dataset.id,
+      open: "visable"
+    })
+    console.log(this.state.value)
   }
   render() {
     const { className, data } = this.props;
+    
     return (
      
       <div className={className}>
@@ -24,8 +30,12 @@ class DropdownMenu extends React.Component {
             const { title } = item;
             return (
 
-                  <li key={title} onClick={this.handleMenuClick} value={title}>{title}</li>
-
+                  <li key={title} onClick={this.handleMenuClick} data-id={title}>
+                  <span>
+                  {title}
+                  </span> 
+                  
+                  </li>
             );
           })}
         </ul>
@@ -38,7 +48,8 @@ class DropdownMenu extends React.Component {
 export default styled(DropdownMenu)`
   .dropdown {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
     outline: none;
     visibility: hidden;
     transition: visibility 0.5s;
@@ -46,15 +57,11 @@ export default styled(DropdownMenu)`
     position: relative;
     right: 140px;
     min-width: 80px;
-    padding: 5px 0;
-    margin: 2px 0 0;
+    padding: 0px 0px 0px 12px;
+    margin: 0;
     font-size: 14px;
-    flex-direction: column;
-    align-items: center;
     list-style: none;
     background-color: #fff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
     border: 1px solid #ccc;
     border-radius: 4px;
     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
@@ -62,20 +69,18 @@ export default styled(DropdownMenu)`
   }
   .dropdown__item {
     cursor: pointer;
-    text-align: left;
-    line-height: 24px;
+    align-items: flex-start;
+    line-height: 4px;
     font-size: 14px;
     outline: none;
-    
     a {
-      margin: 8px 16px;
-      text-decoration: none ;
-      display: block;
+      display: flex;
       span {
         white-space: nowrap;
         overflow: hidden;
         color: #4a4d55;
       }
+
     }
   }
 `;

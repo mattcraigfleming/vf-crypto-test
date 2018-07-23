@@ -4,18 +4,18 @@ import styled from 'styled-components'
 import Label from 'routes/currency/partial/Label'
 
 const Cell = styled.div`
-flex: 1;
-
-${Label} {
-	margin-bottom: 15px;
-}
+	flex: 1;
+	${Label} {
+		margin-bottom: 25px;
+	}
 `
 
 const SummaryItem = styled.div`
-	color: white;
-	align-items: center;
 	display: flex;
+	align-items: center;	
+	color: #fff;
 	font-size: 20px
+	padding: 2px;
 `
 
 export default ({ children, label }) => (

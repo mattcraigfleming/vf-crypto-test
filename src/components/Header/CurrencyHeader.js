@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { plusCoins } from 'store/Consumer'
 import Icon from 'components/Icon'
 
-const backButton = styled(Link)`
+const BackButton = styled(Link)`
     background-color: rgb(231,242,252);
     color: rgb(105,168,239);
     border-radius: 50%;
@@ -45,17 +45,17 @@ const Price = styled.div`
 
 `
 
-const CurrencyHeader = ({coins, match}) => {
+const CurrencyHeader = ({ coins, match }) => {
 
-    const coin = coins[match.params.id]
+    const coin = coins[match.params.id];
 
-    if (!coin) return <div></div>
+    if (!coin) return null
 
     return (
         <HeaderNav>
-            <backButton to="/">
+            <BackButton to="/">
                   ←
-            </backButton>
+            </BackButton>
             <Icon symbol={coin.symbol}/>
             <Title>
                 <Name>
