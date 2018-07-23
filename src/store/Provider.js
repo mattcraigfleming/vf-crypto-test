@@ -24,7 +24,6 @@ class Provider extends Component {
             isLoading: false,
             error: error,
         })
-        console.log(response)
     }
     
     updateCoin = async (id) => {

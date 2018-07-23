@@ -70,7 +70,6 @@ export const CoinCell = ({ data }) => (
 
 export const PriceCell = ({ data }) => (	
 	<PriceCellChild>
-	{console.log(data)}
 		<CurrencySymbol>£</CurrencySymbol> {data.quotes['USD'].price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
 	</PriceCellChild>
 );
