@@ -19,7 +19,7 @@ Data source: https://coinmarketcap.com/api/
 
 ---
 
- - Fix bug, on row click first item, shows 2nd items details on currency screen.
+ - ~~Fix bug, on row click first item, shows 2nd items details on currency screen.~~
  - Finish styling of dropdown.
  - Refactor columns.
  - Hook up dropdown to supply currency convert value and trigger re-render.
