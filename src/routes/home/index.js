@@ -8,37 +8,43 @@ import { plusCoins } from 'store/Consumer'
 
 const tableCols = [
 		{
-			path: [],
+			
 		},
 		{
-			path: [],
+			
+		},
+		{
+			
 		},
     	{
     		title: 'cryptocurrency',
     		component: CoinCell,
-    		path: ['name'],
+    		
     	},
     	{
     		title: 'price',
 		    component: PriceCell,
-    		path: ['price'],
+    		
     	},
     	{
     		title: 'market cap',
     		component: MarketCapCell,
-    		path: ['market_cap_usd'],
+    		
     	},
     	{
     		title: '24h change',
     		component: PercentCell,
-    		path: ['percent_change_24h'],
+    		
 		},
 		{
-			path: [],
+			
 		},
 		{
-			path: [],
-		}
+			
+		},
+		{
+			
+		},
 ];
 
 

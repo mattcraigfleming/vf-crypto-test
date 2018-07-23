@@ -8,14 +8,14 @@ const DEFAULT_STATE = {
 export const CContext = React.createContext(DEFAULT_STATE);
 
 class Provider extends Component {
-    state = DEFAULT_STATE;
+    state = DEFAULT_STATE
 
     componentDidMount() {
         this.setState({isLoading: true})
     }
 
     updateCoins = async () => {
-        const response = await fetch(`https://api.coinmarketcap.com/v2/ticker/?convert=EUR&limit=10&structure=array`);
+        const response = await fetch(`https://api.coinmarketcap.com/v2/ticker/?convert=EUR&limit=10`);
         const coins = await response.json();
         const error = coins.metadata;
         this.setState({
@@ -38,7 +38,8 @@ class Provider extends Component {
         }
         this.setState((prevState) => ({
             coins: nextCoin,
-            isLoading: false
+            isLoading: false,
+            lastUpdated: Date()
         }));
     }
 

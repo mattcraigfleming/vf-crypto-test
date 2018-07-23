@@ -24,6 +24,6 @@ const ListNav = ({ columns = [] }) => (
         {columns.map(column => <Th key={column.title}>{column.title}</Th>)}
         </tr>
     </ListHeader>
-)
+);
 
 export default ListNav

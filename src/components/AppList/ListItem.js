@@ -19,9 +19,4 @@ const ListItem = ({ component, value, data }) => {
     )
 }
 
-
-ListItem.defaultProps = {
-    align: 'left',
-}
-
 export default ListItem;

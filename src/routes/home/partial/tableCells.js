@@ -51,7 +51,7 @@ const CurrencySymbol = styled.span`
 
 
 
-export const CoinCell = ({ value, data }) => (
+export const CoinCell = ({ data }) => (
 	<CoinCellChild>
 
 		<Rank>
@@ -59,7 +59,7 @@ export const CoinCell = ({ value, data }) => (
 		</Rank>
 		 <Icon src={`https://rawgit.com/atomiclabs/cryptocurrency-icons/master/svg/icon/${data.symbol.toLowerCase()}.svg`} alt={data.symbol.toLowerCase()} />
 		<Title>
-			{value}
+			{data.name}
 		</Title>
 		
 

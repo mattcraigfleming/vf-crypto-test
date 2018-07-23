@@ -53,7 +53,7 @@ function AppHeader(props) {
 			<Logo>VFCrypto</Logo>
 			<ul>
 				<li tabIndex="0" className="nav-item"><Title>{menuData[0].title}</Title><Caret />
-				<DropdownMenu data={menuData} />
+					<DropdownMenu data={menuData} />
 				</li>
 			</ul>
 			</nav>

@@ -74,12 +74,9 @@ const CurSummaryItem = styled.div`
 
 class Currency extends React.Component {
 
-
-
     componentWillMount(){
 
-        const { coins, updateCoin, match } = this.props
-
+        const { coins, updateCoin, match } = this.props;
         if (!coins[match.params.id]) {
             updateCoin(match.params.id)
             }

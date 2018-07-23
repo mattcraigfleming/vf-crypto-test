@@ -14,7 +14,6 @@ const Wrapper = styled.div`
   flex-direction: column;
 
 `
-
 const baseStyles = () => injectGlobal`
     ${reset}  
     html, body, #root {
@@ -22,7 +21,6 @@ const baseStyles = () => injectGlobal`
     }
 
 `
-
 
 class App extends Component {
   render() {

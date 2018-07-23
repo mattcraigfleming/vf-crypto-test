@@ -13,7 +13,7 @@ const Header = styled.header`
 export default () => (
     <Header>
         <Switch>
-            <Route path="/coin/:id/" component={CurrencyHeader} />
+            <Route path="/coin/:id" component={CurrencyHeader} />
             <Route component={AppHeader} />
         </Switch>
     </Header>
