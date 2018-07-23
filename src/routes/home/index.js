@@ -66,7 +66,6 @@ class Home extends React.Component {
 			 }
 
 	handleRowClick = (row) => {
-		console.log(row);
 		const { history } = this.props;
 		history.push(`/coin/${row.id}`)
 	}

@@ -1,51 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-class DropdownMenu extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      value: "",
-      open: "hidden",
-    }
-    this.handleMenuClick = this.handleMenuClick.bind(this)
-  }
-
-  handleMenuClick(e) {
-    this.setState({
-      value: e.currentTarget.dataset.id,
-      open: "visable"
-    })
-    console.log(this.state.value)
-  }
-  render() {
-    const { className, data } = this.props;
-    
-    return (
-     
-      <div className={className}>
-        <ul className="dropdown">
-          {data.map(item => {
-            const { title } = item;
-            return (
-
-                  <li key={title} onClick={this.handleMenuClick} data-id={title}>
-                  <span>
-                  {title}
-                  </span> 
-                  
-                  </li>
-            );
-          })}
-        </ul>
-      </div>
-    );
-  }
-
-}
-
-export default styled(DropdownMenu)`
+const DropdownMenuDiv = styled.div`
   .dropdown {
     display: flex;
     flex-direction: column;
@@ -54,6 +10,7 @@ export default styled(DropdownMenu)`
     visibility: hidden;
     transition: visibility 0.5s;
     top: 100%;
+    z-index: 1000;
     position: relative;
     right: 140px;
     min-width: 80px;
@@ -84,3 +41,48 @@ export default styled(DropdownMenu)`
     }
   }
 `;
+
+class DropdownMenu extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: "",
+      open: "hidden",
+    }
+    this.handleMenuClick = this.handleMenuClick.bind(this)
+  }
+
+  handleMenuClick(e) {
+    this.setState({
+      value: e.currentTarget.dataset.id,
+      open: "visable"
+    })
+  }
+  
+  render() {
+    
+    const { className, data } = this.props;
+    
+    return (
+     
+      <DropdownMenuDiv className={className}>
+        <ul className="dropdown">
+          {data.map(item => {
+            const { title } = item;
+            return (
+                  <li key={title} onClick={this.handleMenuClick} data-id={title}>
+                    <span>
+                    {title}
+                    </span> 
+                  </li>
+            );
+          })}
+        </ul>
+      </DropdownMenuDiv>
+    );
+  }
+
+}
+
+export default DropdownMenu

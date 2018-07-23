@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import DropdownMenu from '../Dropdown/DropdownMenu'
 import { menuData } from '../Dropdown/menuData'
+import { plusCoins } from '../../store/Consumer'
 
 const Logo = styled.h1`
 
@@ -61,5 +62,5 @@ function AppHeader(props) {
 	);
 	}
 	
-	export default AppHeader;
+	export default plusCoins(AppHeader);
 
