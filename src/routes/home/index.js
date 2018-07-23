@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import AppList from 'components/AppList'
-import { CoinCell, PriceCell, MarketCapCell, PercentCell} from 'routes/home/partial/tableCells'
+import { CoinCell, PriceCell, MarketCapCell, PercentCell } from 'routes/home/partial/tableCells'
 import styled from 'styled-components'
 import { plusCoins } from 'store/Consumer'
 

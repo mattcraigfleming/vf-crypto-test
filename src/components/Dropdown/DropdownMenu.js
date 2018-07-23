@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { plusCoins } from '../../store/Consumer';
 
 const DropdownMenuDiv = styled.div`
   .dropdown {
@@ -47,17 +48,13 @@ class DropdownMenu extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: "",
-      open: "hidden",
+
     }
     this.handleMenuClick = this.handleMenuClick.bind(this)
   }
 
   handleMenuClick(e) {
-    this.setState({
-      value: e.currentTarget.dataset.id,
-      open: "visable"
-    })
+    this.props.updateCoins(e.currentTarget.dataset.id)
   }
   
   render() {
@@ -85,4 +82,4 @@ class DropdownMenu extends React.Component {
 
 }
 
-export default DropdownMenu
+export default plusCoins(DropdownMenu)

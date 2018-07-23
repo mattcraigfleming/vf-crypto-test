@@ -14,8 +14,8 @@ class Provider extends Component {
         this.setState({isLoading: true})
     }
 
-    updateCoins = async () => {
-        const response = await fetch(`https://api.coinmarketcap.com/v2/ticker/?convert=EUR&limit=10`);
+    updateCoins = async (val) => {
+        const response = await fetch(`https://api.coinmarketcap.com/v2/ticker/?convert=${val}&limit=10`);
         const coins = await response.json();
         const error = coins.metadata;
         this.setState({
@@ -24,6 +24,7 @@ class Provider extends Component {
             isLoading: false,
             error: error,
         })
+        console.log(response)
     }
     
     updateCoin = async (id) => {
