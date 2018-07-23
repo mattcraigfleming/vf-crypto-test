@@ -26,6 +26,7 @@ Data source: https://coinmarketcap.com/api/
  - Add Number formatting.
  - Add last updated on Home page.
  - Responsive styling.
+ - Position/Swap loading animation
 
 
 ### Usage
