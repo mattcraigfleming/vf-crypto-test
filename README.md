@@ -34,7 +34,8 @@ Data source: https://coinmarketcap.com/api/
 ---
 
 ```javascript
-yarn add 
+	cd vf-crypto-test
+	yarn 
 	yarn start
 	yarn build
 	yarn test
